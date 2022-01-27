@@ -13,6 +13,6 @@ class RobotContainer:
             DefaultDrivetrain(
                 self.robot_drive,
                 self.joystick.getRawAxis(1) * constants.C_BUFFER_X_SPEED,
-                self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION
+                self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
             )
         )
