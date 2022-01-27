@@ -1,8 +1,6 @@
 import wpilib
 import wpilib.drive
 
-# wpilib.PneumaticsModuleType.CTREPCM = 0
-
 class MyRobot(wpilib.TimedRobot):
 	def robotInit(self):
 		self.compressor = wpilib.Compressor(wpilib.PneumaticsModuleType.CTREPCM)

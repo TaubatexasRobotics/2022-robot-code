@@ -1,3 +1,4 @@
+import typing
 import wpilib
 import constants
 
@@ -12,7 +13,7 @@ class RobotContainer:
         self.robot_drive.setDefaultCommand(
             DefaultDrivetrain(
                 self.robot_drive,
-                self.joystick.getRawAxis(1) * constants.C_BUFFER_X_SPEED,
-                self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
+                lambda: self.joystick.getRawAxis(1) * constants.C_BUFFER_X_SPEED,
+                lambda: self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
             )
         )
