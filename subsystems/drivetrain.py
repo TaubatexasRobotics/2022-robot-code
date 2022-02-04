@@ -5,7 +5,7 @@ import wpilib
 import wpilib.drive
 
 class Drivetrain(commands2.SubsystemBase):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         
         self.m_left_front = ctre.WPI_VictorSPX(constants.C_M_LEFT_FRONT)
@@ -19,5 +19,5 @@ class Drivetrain(commands2.SubsystemBase):
         self.robot_drive = wpilib.drive.DifferentialDrive(self.m_left, self.m_right)
         self.robot_drive.setExpiration(0.1)
    	
-    def setMotors(self, x_speed : float, z_rotation : float):
+    def setMotors(self, x_speed : float, z_rotation : float) -> None:
         self.robot_drive.arcadeDrive(x_speed, z_rotation, True)
