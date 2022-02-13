@@ -6,7 +6,7 @@ from subsystems.drivetrain import Drivetrain
 from commands.defaultdrivetrain import DefaultDrivetrain
 
 class RobotContainer:
-    def __init__(self):
+    def __init__(self) -> None:
         self.robot_drive = Drivetrain()
 
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER)
