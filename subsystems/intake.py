@@ -3,7 +3,7 @@ import constants
 import commands2
 import wpilib
 
-class Climber(commands2.SubsystemBase):
+class Intake(commands2.SubsystemBase):
     def __init__(self) -> None:
         super().__init__()
         self.compressor = wpilib.Compressor(wpilib.PneumaticsModuleType.CTREPCM)

@@ -1,6 +1,9 @@
 import wpilib
 import commands2
 
+# Véio: IterativeRobot ou TimedRobot
+# Novo: TimedCommandRobot
+
 from robotcontainer import RobotContainer
 
 class TaubatexasRobot(commands2.TimedCommandRobot):
