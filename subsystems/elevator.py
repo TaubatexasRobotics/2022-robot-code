@@ -17,7 +17,8 @@ class Elevator(commands2.SubsystemBase):
             0 : wpilib.DoubleSolenoid.Value.kOff,
             1 : wpilib.DoubleSolenoid.Value.kForward,
             2 : wpilib.DoubleSolenoid.Value.kReverse
-        }[state])
+        }[state]) 
+        
   
 
 
