@@ -1,3 +1,4 @@
+# Identifying control possibilities
 # DualShock 4 (PS4 Controller) without extern programs
 
 dualshock4 = {
@@ -8,7 +9,7 @@ dualshock4 = {
     'options' : 4,
     'share' : 5,
     'ps' : 6,
-    'l1' : 7
+    'l1' : 7,
     'r1' : 8,
     'l3' : 9,
     'r3' : 10

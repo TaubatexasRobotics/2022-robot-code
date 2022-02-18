@@ -12,4 +12,4 @@ class DefaultDrivetrain(commands2.CommandBase):
         self.addRequirements([self.robot_drive])
 
     def execute(self) -> None:
-        self.robot_drive.setMotors(self.x_speed(), self.z_rotation()
+        self.robot_drive.setMotors(self.x_speed(), self.z_rotation())
