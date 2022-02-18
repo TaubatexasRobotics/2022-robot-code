@@ -1,8 +1,10 @@
+# Importing libraries and constant values
 import ctre
-import constants
+import constants #values from constants.py
 import commands2
 import wpilib
 
+# Compressor Solenoid Operation, Giving Start Guidance
 class Intake(commands2.SubsystemBase):
     def __init__(self) -> None:
         super().__init__()
@@ -12,13 +14,15 @@ class Intake(commands2.SubsystemBase):
             constants.C_SOLENOID_FORWARD_CHANNEL, 
             constants.C_SOLENOID_REVERSE_CHANNEL
             )
-    
+
+    # Function to start and stop compressor     
     def setCompressor(self, active : bool):
         if active == True:
             self.compressor.start()
         else:
             self.compressor.stop()
-        
+
+    # Function to control solenoid from the joystick      
     def setSolenoidState(self, state : int):
         self.solenoid.set({
             1 : wpilib.DoubleSolenoid.Value.kOff,

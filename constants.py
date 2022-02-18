@@ -1,3 +1,4 @@
+# Defining constants to use in systems
 # Motor Controllers
 C_M_LEFT_BACK = 11
 C_M_LEFT_FRONT = 22
