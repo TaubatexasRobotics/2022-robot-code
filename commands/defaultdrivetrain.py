@@ -1,7 +1,10 @@
-import typing
+import typing # Parameter calling
 import commands2
+
+# Importing functions from Subsystem
 from subsystems.drivetrain import Drivetrain
 
+# Execute commands from the joystick axes
 class DefaultDrivetrain(commands2.CommandBase):
     def __init__(self, robot_drive : Drivetrain, x_speed : typing.Callable[[], float], z_rotation : typing.Callable[[], float]) -> None:
         super().__init__() 
