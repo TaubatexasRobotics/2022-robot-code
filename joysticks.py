@@ -12,7 +12,14 @@ dualshock4 = {
     'l1' : 7,
     'r1' : 8,
     'l3' : 9,
-    'r3' : 10
+    'r3' : 10,
+
+    #Ver no simulador o comando respectivo (alert)
+
+    'pov-up' : 0,
+    'pov-down' : 180,
+    'pov-left' : 270,
+    'pov-right' : 90
 }
 
 # Generic Nintendo Switch Pro Controller
