@@ -2,18 +2,21 @@
 # DualShock 4 (PS4 Controller) without extern programs
 
 dualshock4 = {
-    'cross' : 0,
     'square' : 1,
-    'circle' : 2,
-    'triangle' : 3,
-    'options' : 4,
-    'share' : 5,
-    'ps' : 6,
-    'l1' : 7,
-    'r1' : 8,
-    'l3' : 9,
-    'r3' : 10,
-
+    'cross' : 2,
+    'circle' : 3,
+    'triangle' : 4,
+    'l1' : 5,
+    'r1' : 6,
+    'l2' : 7,
+    'r2' : 8,
+    'share' : 9,
+    'options' : 10,
+    'l3' : 11,
+    'r3' : 12,
+    'ps' : 13,
+    'touchpad' : 14,
+    
     #Ver no simulador o comando respectivo (alert)
 
     'pov-up' : 0,
@@ -35,4 +38,19 @@ g_pro_controller = {
     'b' : 7,
     'x' : 8,
     'y' : 9
+}
+
+# Generic Xbox 360 Controller
+
+g_xbox_360 = {
+    'a' : 1,
+    'b' : 2,
+    'x' : 3,
+    'y' : 4,
+    'lb' : 5,
+    'rb' : 6,
+    'back' : 7,
+    'start' : 8,
+    'press_left_stick' : 9,
+    'press_right_stick' : 10
 }
