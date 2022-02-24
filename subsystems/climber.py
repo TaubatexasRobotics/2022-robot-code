@@ -10,20 +10,22 @@ class Climber(commands2.SubsystemBase):
         super().__init__()
 
         #Start Climber controls
-        self.apagar_isso = 0
+
         self.left_hook = ctre.WPI_VictorSPX(55)
         self.right_hook = ctre.WPI_VictorSPX(66)
+        self.altura = 0
         
         # Grouping 
         self.climber_controllers = [self.left_hook,self.right_hook]
 
-    def ExtendBotao(self):
+    def subir(self):
         #TODO: implementar movimentação dos motores 
 
-        print(self.apagar_isso)
-        self.apagar_isso += 1
+        self.altura += 1
+        print(self.altura)
 
     def ContractBotao(self):
 
-        print(self.apagar_isso)
-        self.apagar_isso -= 1
+        if(self.altura>0):
+            self.altura -= 1
+        print(self.altura)
