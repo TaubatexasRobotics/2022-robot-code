@@ -1,7 +1,9 @@
 
 # Importing libraries
 import typing # Lambda Functions
-import wpilib 
+import wpilib
+from commands.intakeArm import IntakeDown, IntakeUp
+from commands.intakeAtivarCommand import PullIntake, PushIntake 
 import constants # Constant variables from constants.py
 import commands2
 from commands2 import button 
@@ -19,11 +21,8 @@ from commands.defaultdrivetrain import DefaultDrivetrain
 from subsystems.shooter import Shooter
 from commands.shootcommand import ShooterCommand
 
-from subsystems.intakeNeck import IntakeNeck
-from commands.ativarNeck import ativarNeck
-
-from subsystems.intake_elevator import IntakeElevator 
-from commands.mover_elevador_intake import IntakeElevator, MoverElevator 
+from subsystems.intakeArm import intakeArm
+from subsystems.intakeAtivar import intakeActive
 
 # In this class, has created Drivetrain controls system
 class RobotContainer:
@@ -31,6 +30,10 @@ class RobotContainer:
         self.robot_drive = Drivetrain() #Creating function
 
         self.climber = Climber()
+
+        self.intakeArm = intakeArm
+
+        self.intakeActive = intakeActive
 
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER) # Identifying
         
@@ -41,7 +44,31 @@ class RobotContainer:
                 lambda: self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
             )
         )
-      
+
+
+
+    def configureButtonBindings(self):
+        commands2.button.POVButton(self.joystick, 1).whenHeld(
+            PullIntake(self.intakeArm)
+        )
+
+        commands2.button.POVButton(self.joystick, 2).whenHeld(
+            PushIntake(self.intakeArm)
+        )
+
+
+
+    def configureButtonBindings(self):
+        commands2.button.POVButton(self.joystick, 3).whenHeld(
+            IntakeUp(self.intakeActive)
+        )
+
+        commands2.button.POVButton(self.joystick, 4).whenHeld(
+            IntakeDown(self.intakeActive)
+        )
+
+
+
     def configureButtonBindings(self):
         commands2.button.POVButton(self.joystick, 0).whenHeld(
             ExtendClimber(self.climber)
