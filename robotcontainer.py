@@ -3,13 +3,14 @@
 import typing # Lambda Functions
 import wpilib 
 import constants # Constant variables from constants.py
+import commands2
+from commands2 import button 
+
+from subsystems.climber import Climber
+from commands.activate_climber import ExtendClimber, ContractClimber
 
 import commands2
 import commands2.button
-
-# importação do subsistema e do comando
-from subsystems.exemploSubsystem import ExemploSubsistema
-from commands.exemploComando import ExemploComando
 
 # Importing Drivetrain subsystem
 from subsystems.drivetrain import Drivetrain
@@ -29,16 +30,8 @@ class RobotContainer:
     def __init__(self) -> None:
         self.robot_drive = Drivetrain() #Creating function
 
-        # declarar subsistema e comando
-        self.exemplo = ExemploSubsistema()
+        self.climber = Climber()
 
-        #DECLARAR SUBSYSTEM/COMANDO DO SHOOTER
-        self.shooter = Shooter()
-
-        self.intake_elevator = IntakeElevator()
-                
-        self.intakeNeck_subsystem = IntakeNeck()
-        
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER) # Identifying
         
         self.robot_drive.setDefaultCommand(
@@ -48,32 +41,15 @@ class RobotContainer:
                 lambda: self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
             )
         )
-    
-    # aqui vcs vão configurar os botoes
+      
     def configureButtonBindings(self):
-        # Exemplo: quando pressionar um determinado subsistema, ativa-lo com 50%
-        commands2.button.JoystickButton(self.joystick, 1).whenPressed(
-           MoverElevator(self.intake_elevator, 0.5)
-        )
-        commands2.button.JoystickButton(self.joystick, 2).whenPressed(
-            MoverElevator(self.intake_elevator, 0.5)
-        )
-        commands2.button.JoystickButton(self.joystick, 3).whenPressed(
-            ativarNeck(self.intakeNeck_subsystem, 0.5)
-        )
-        
-        commands2.button.JoystickButton(self.joystick, 4).whenPressed(
-            ativarNeck(self.intakeNeck_subsystem, -0.5)
+        commands2.button.POVButton(self.joystick, 0).whenHeld(
+            ExtendClimber(self.climber)
         )
 
-
-        
-        commands2.button.JoystickButton(self.joystick, 5).whenPressed(
-            ShooterCommand(self.shooter, 1)
-
+        commands2.button.POVButton(self.joystick, 180).whenHeld(
+            ContractClimber(self.climber)
         )
 
-        commands2.button.JoystickButton(self.joystick, 6).whenPressed(
-            ShooterCommand(self.shooter, -1)
-
-        )
+    def getAutonomousCommand(self) -> commands2.Command:
+        return self.chooser.getSelected() 
