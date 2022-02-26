@@ -13,19 +13,23 @@ class Climber(commands2.SubsystemBase):
 
         self.left_hook = ctre.WPI_VictorSPX(55)
         self.right_hook = ctre.WPI_VictorSPX(66)
-        self.altura = 0
+        self.height = 0
         
         # Grouping 
         self.climber_controllers = [self.left_hook,self.right_hook]
 
-    def subir(self):
+    def move_up(self):
         #TODO: implementar movimentação dos motores 
 
-        self.altura += 1
-        print(self.altura)
+        self.height += 1
+        print(self.height)
 
-    def ContractBotao(self):
+    def is_height_positive(self):
+        return self.height > 0
 
-        if(self.altura>0):
-            self.altura -= 1
-        print(self.altura)
+    def move_down(self):
+        if not self.is_height_positive():
+            return
+
+        self.height -= 1
+        print(self.height)

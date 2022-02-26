@@ -14,7 +14,7 @@ class ExtendClimber(commands2.CommandBase):
     #     super().initialize()
         
     def execute(self) -> None:
-        self.climber.subir()
+        self.climber.move_up()
 
 class ContractClimber(commands2.CommandBase):
     def __init__(self, climber) -> None:
@@ -25,4 +25,4 @@ class ContractClimber(commands2.CommandBase):
     #     super().initialize()
 
     def execute(self) -> None:
-        self.climber.ContractBotao()
+        self.climber.move_down()
