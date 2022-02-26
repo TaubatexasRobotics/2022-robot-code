@@ -20,15 +20,22 @@ class Climber(commands2.SubsystemBase):
     def move_up(self):
         #TODO: implementar movimentação dos motores 
 
-        self.height += 1
-        print(self.height)
+        self.m_climber.set(1)
 
-    def is_height_positive(self):
-        return self.height > 0
+        #self.height += 1
+        print("subindo")
+
+    #def is_height_positive(self):
+    #    return self.height > 0
 
     def move_down(self):
-        if not self.is_height_positive():
-            return
+        #if not self.is_height_positive():
+        #    return
 
-        self.height -= 1
-        print(self.height)
+        self.m_climber.set(-1)
+
+        #self.height -= 1
+        print("descendo")
+
+    def stop(self):
+        self.m_climber.set(0)

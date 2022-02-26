@@ -7,7 +7,7 @@ import commands2
 from commands2 import button 
 
 from subsystems.climber import Climber
-from commands.activate_climber import ExtendClimber, ContractClimber
+from commands.activate_climber import ExtendClimber, ContractClimber, StopClimber
 # Importing Drivetrain subsystem
 from subsystems.drivetrain import Drivetrain
 from commands.defaultdrivetrain import DefaultDrivetrain
@@ -34,6 +34,10 @@ class RobotContainer:
 
         commands2.button.POVButton(self.joystick, 180).whenHeld(
             ContractClimber(self.climber)
+        )
+
+        commands2.button.POVButton(self.joystick, 0).whenReleased(
+            StopClimber(self.climber)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:

@@ -6,8 +6,8 @@ C_M_RIGHT_FRONT = 33
 C_M_RIGHT_BACK = 44
 
 # Climber motor controllers
-C_M_LEFT_HOOK = 55
-C_M_RIGHT_HOOK = 66
+C_M_LEFT_HOOK = 5
+C_M_RIGHT_HOOK = 6
 
 # Joystick Ports
 C_DRIVER_CONTROLLER = 0
