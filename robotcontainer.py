@@ -1,5 +1,5 @@
-#   Importing libraries
 
+# Importing libraries
 import typing # Lambda Functions
 import wpilib 
 import constants # Constant variables from constants.py
@@ -12,12 +12,24 @@ from commands.activate_climber import ExtendClimber, ContractClimber, StopClimbe
 from subsystems.drivetrain import Drivetrain
 from commands.defaultdrivetrain import DefaultDrivetrain
 
+from subsystems.shooter import Shooter
+from commands.shootcommand import ShooterCommand
+
+from subsystems.intakeNeck import IntakeNeck
+from commands.ativarNeck import ativarNeck
+
+from subsystems.intake_elevator import IntakeElevator 
+from commands.mover_elevador_intake import IntakeElevator, MoverElevator 
+
 # In this class, has created Drivetrain controls system
 class RobotContainer:
     def __init__(self) -> None:
         self.robot_drive = Drivetrain() #Creating function
+
         self.climber = Climber()
+
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER) # Identifying
+        
         self.robot_drive.setDefaultCommand(
             DefaultDrivetrain(
                 self.robot_drive, 
@@ -25,7 +37,6 @@ class RobotContainer:
                 lambda: self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
             )
         )
-
       
     def configureButtonBindings(self):
         commands2.button.POVButton(self.joystick, 0).whenHeld(
