@@ -1,4 +1,3 @@
-# Identifying control possibilities
 # DualShock 4 (PS4 Controller) without extern programs
 
 dualshock4 = {
