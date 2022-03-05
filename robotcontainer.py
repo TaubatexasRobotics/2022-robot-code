@@ -1,7 +1,8 @@
 
 # Importing libraries
-import typing # Lambda Functions
-import wpilib 
+#import typing # Lambda Functions
+import wpilib
+
 import constants # Constant variables from constants.py
 import commands2
 from commands2 import button 
@@ -15,24 +16,22 @@ from commands.angleClimberCmd import IncreaseClimberAngle, DecreaseClimberAngle
 from subsystems.drivetrain import Drivetrain
 from commands.defaultdrivetrain import DefaultDrivetrain
 
-from subsystems.shooter import Shooter
-from commands.shootcommand import ShooterCommand
+from subsystems.intakeArm import IntakeArm
+#from subsystems.intakeAtivar import IntakeActive
 
-from subsystems.intakeNeck import IntakeNeck
-from commands.ativarNeck import ativarNeck
-
-from subsystems.intake_elevator import IntakeElevator 
-from commands.mover_elevador_intake import IntakeElevator, MoverElevator 
+from commands.intakeArmCmd import IntakeDownCmd, IntakeUpCmd
+# from commands.intakeAtivarCommand import PullIntake, PushIntake 
 
 # In this class, has created Drivetrain controls system
 class RobotContainer:
     def __init__(self) -> None:
         self.robot_drive = Drivetrain() #Creating function
-
         self.climber = Climber()
 
         self.angle = AngleClimber()
 
+        self.intakeArm = IntakeArm()
+        #self.intakeActive = IntakeActive()
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER) # Identifying
         
         self.robot_drive.setDefaultCommand(
@@ -42,12 +41,32 @@ class RobotContainer:
                 lambda: self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
             )
         )
-      
+
     def configureButtonBindings(self):
+        # INTAKE ACTIVE
+        # commands2.button.JoystickButton(self.joystick, 1).whenHeld(
+        #     PullIntake(self.intakeArm) #INTAKE ACTIVE
+        # )
+
+        # commands2.button.JoystickButton(self.joystick, 2).whenHeld(
+        #     PushIntake(self.intakeArm) #INTAKE ACTIVE
+        # )
+
+        # INTAKE ARM
+        # IntakeUp levanta o braço do intake
+        commands2.button.JoystickButton(self.joystick, 3).whenHeld(
+            IntakeUpCmd(self.intakeArm)
+        )
+
+        #IntakeDown abaixa o braço do intake
+        commands2.button.JoystickButton(self.joystick, 4).whenHeld( 
+            IntakeDownCmd(self.intakeArm)
+        )
+
+        # CLIMBER
         commands2.button.POVButton(self.joystick, 0).whenHeld(
             ExtendClimber(self.climber)
         )
-
         commands2.button.POVButton(self.joystick, 180).whenHeld(
             ContractClimber(self.climber)
         )
