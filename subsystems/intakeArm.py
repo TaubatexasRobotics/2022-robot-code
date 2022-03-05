@@ -11,9 +11,13 @@ class IntakeArm(commands2.SubsystemBase):
     def intake_move_up(self):
 
         self.m_intakeArm.set(1)
-        print("subiu")
+        print("sobe")
 
     def intake_move_down(self):
 
         self.m_intakeArm.set(-1)
-        print("desceu")
+        print("desce")
+    
+    def intake_move_stop(self):
+        self.m_intakeArm.set(0)
+        print("para")
