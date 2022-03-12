@@ -1,0 +1,18 @@
+Controle do Amaral
+
+A = Pegar Bolas
+
+X = Soltar Bolas
+
+Y = Levantar Intake
+
+B = Abaixar Intake
+
+Analógico 2 = Subir e descer garra móvel
+
+Lt = Para trás Garra móvel
+
+Rt = Para frente garra móvel
+
+
+
