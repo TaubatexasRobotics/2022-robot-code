@@ -5,12 +5,13 @@ import wpilib
 
 import constants # Constant variables from constants.py
 import commands2
-
-import commands2.button
-
+from commands2 import button 
+# Importing Climber
 from subsystems.climber import Climber
-from commands.activate_climber import ExtendClimber, ContractClimber
+from commands.climberCmd import ExtendClimber, ContractClimber
 
+from subsystems.angleClimber import AngleClimber
+from commands.angleClimberCmd import IncreaseClimberAngle, DecreaseClimberAngle
 # Importing Drivetrain subsystem
 from subsystems.drivetrain import Drivetrain
 from commands.defaultdrivetrain import DefaultDrivetrain
@@ -29,6 +30,9 @@ class RobotContainer:
     def __init__(self) -> None:
         self.robot_drive = Drivetrain() #Creating function
         self.climber = Climber()
+
+        self.angle = AngleClimber()
+
         self.intakeArm = IntakeArm()
         self.intakeRolamento = IntakeRolamento()
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER) # Identifying
@@ -68,6 +72,14 @@ class RobotContainer:
         )
         commands2.button.POVButton(self.joystick, 180).whenHeld(
             ContractClimber(self.climber)
+        )
+
+        commands2.button.POVButton(self.joystick, 90).whenHeld(
+            IncreaseClimberAngle(self.angle)
+        )
+
+        commands2.button.POVButton(self.joystick, 270).whenHeld(
+            DecreaseClimberAngle(self.angle)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:
