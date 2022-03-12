@@ -9,11 +9,10 @@ class IntakeArm(commands2.SubsystemBase):
         self.m_intakeArm = ctre.WPI_VictorSPX(constants.C_M_ARM_INTAKE)
 
     def intake_move_up(self):
-
         self.m_intakeArm.set(1)
-        print("subiu")
 
     def intake_move_down(self):
-
         self.m_intakeArm.set(-1)
-        print("desceu")
+    
+    def intake_move_stop(self):
+        self.m_intakeArm.set(0)

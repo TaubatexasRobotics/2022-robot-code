@@ -17,9 +17,12 @@ from commands.defaultdrivetrain import DefaultDrivetrain
 
 from subsystems.intakeArm import IntakeArm
 #from subsystems.intakeAtivar import IntakeActive
-
 from commands.intakeArmCmd import IntakeDownCmd, IntakeUpCmd
 # from commands.intakeAtivarCommand import PullIntake, PushIntake 
+
+from subsystems.intakeRolamento import IntakeRolamento
+from commands.intakeRolamentoCmd import IntakePushCmd, IntakePullCmd
+
 
 # In this class, has created Drivetrain controls system
 class RobotContainer:
@@ -27,7 +30,7 @@ class RobotContainer:
         self.robot_drive = Drivetrain() #Creating function
         self.climber = Climber()
         self.intakeArm = IntakeArm()
-        #self.intakeActive = IntakeActive()
+        self.intakeRolamento = IntakeRolamento()
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER) # Identifying
         
         self.robot_drive.setDefaultCommand(
@@ -39,24 +42,24 @@ class RobotContainer:
         )
 
     def configureButtonBindings(self):
-        # INTAKE ACTIVE
-        # commands2.button.JoystickButton(self.joystick, 1).whenHeld(
-        #     PullIntake(self.intakeArm) #INTAKE ACTIVE
-        # )
-
-        # commands2.button.JoystickButton(self.joystick, 2).whenHeld(
-        #     PushIntake(self.intakeArm) #INTAKE ACTIVE
-        # )
 
         # INTAKE ARM
         # IntakeUp levanta o braço do intake
         commands2.button.JoystickButton(self.joystick, 3).whenHeld(
             IntakeUpCmd(self.intakeArm)
         )
-
-        #IntakeDown abaixa o braço do intake
         commands2.button.JoystickButton(self.joystick, 4).whenHeld( 
             IntakeDownCmd(self.intakeArm)
+        )
+
+        #IntakeRolamento
+        #IntakePull - Puxar Bola
+        commands2.button.JoystickButton(self.joystick, 5).whenHeld( 
+            IntakePullCmd(self.intakeRolamento)
+        )
+        #IntakePush - Empurrar Bola
+        commands2.button.JoystickButton(self.joystick, 6).whenHeld( 
+            IntakePushCmd(self.intakeRolamento)
         )
 
         # CLIMBER
