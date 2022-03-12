@@ -1,85 +1,96 @@
+# Not sure yet about these two :)
+# import typing # Lambda Functions
+# from commands2 import button 
 
-# Importing libraries
-#import typing # Lambda Functions
+# Robot Py
 import wpilib
-
-import constants # Constant variables from constants.py
+# Command-based robot
 import commands2
-from commands2 import button 
-# Importing Climber
+import commands2.button
+
+# easily managing our constants
+import constants
+
+# Climber
 from subsystems.climber import Climber
 from commands.climberCmd import ExtendClimber, ContractClimber
-
 from subsystems.angleClimber import AngleClimber
-from commands.angleClimberCmd import IncreaseClimberAngle, DecreaseClimberAngle
-# Importing Drivetrain subsystem
+from commands.angleClimberCmd import AngleClimberForward, AngleClimberBackward
+
+# Drivetrain
 from subsystems.drivetrain import Drivetrain
-from commands.defaultdrivetrain import DefaultDrivetrain
+from commands.drivetrainCmd import DrivetrainCmd
 
-from subsystems.intakeArm import IntakeArm
-#from subsystems.intakeAtivar import IntakeActive
-from commands.intakeArmCmd import IntakeDownCmd, IntakeUpCmd
-# from commands.intakeAtivarCommand import PullIntake, PushIntake 
+# Arm
+from subsystems.arm import Arm
+from commands.armCmd import IntakeDownCmd, IntakeUpCmd
 
-from subsystems.intakeRolamento import IntakeRolamento
-from commands.intakeRolamentoCmd import IntakePushCmd, IntakePullCmd
+# Intake
+from subsystems.intake import Intake
+from commands.intakeCmd import IntakePushCmd, IntakePullCmd
 
 
-# In this class, has created Drivetrain controls system
+# class that contains all subsystems, commands and setup
 class RobotContainer:
     def __init__(self) -> None:
-        self.robot_drive = Drivetrain() #Creating function
-        self.climber = Climber()
-
-        self.angle = AngleClimber()
-
-        self.intakeArm = IntakeArm()
-        self.intakeRolamento = IntakeRolamento()
-        self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER) # Identifying
         
-        self.robot_drive.setDefaultCommand(
-            DefaultDrivetrain(
-                self.robot_drive, 
+        # Subsystems
+        self.drivetrain = Drivetrain()
+        self.climber = Climber()
+        self.angle = AngleClimber()
+        self.arm = Arm()
+        self.intake = Intake()
+        
+        # Joystick
+        self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER)
+        
+        # Drivetrain: binding command to joystick
+        self.drivetrain.setDefaultCommand(
+            DrivetrainCmd(
+                self.drivetrain, 
                 lambda: self.joystick.getRawAxis(1) * constants.C_BUFFER_X_SPEED,
                 lambda: self.joystick.getRawAxis(0) * constants.C_BUFFER_Z_ROTATION,
             )
         )
 
+    # Binding commands to joystick buttons (Except for Drivetrain)
     def configureButtonBindings(self):
 
-        # INTAKE ARM
-        # IntakeUp levanta o braço do intake
+        # Arm Up
         commands2.button.JoystickButton(self.joystick, 3).whenHeld(
-            IntakeUpCmd(self.intakeArm)
+            IntakeUpCmd(self.arm)
         )
+        # Arm Down
         commands2.button.JoystickButton(self.joystick, 4).whenHeld( 
-            IntakeDownCmd(self.intakeArm)
+            IntakeDownCmd(self.arm)
         )
 
-        #IntakeRolamento
-        #IntakePull - Puxar Bola
+        # Pull cargo in
         commands2.button.JoystickButton(self.joystick, 5).whenHeld( 
-            IntakePullCmd(self.intakeRolamento)
+            IntakePullCmd(self.intake)
         )
-        #IntakePush - Empurrar Bola
+        # Push cargo out
         commands2.button.JoystickButton(self.joystick, 6).whenHeld( 
-            IntakePushCmd(self.intakeRolamento)
+            IntakePushCmd(self.intake)
         )
 
-        # CLIMBER
+        # Climber (hooks) Up
         commands2.button.POVButton(self.joystick, 0).whenHeld(
             ExtendClimber(self.climber)
         )
+        # Climber (hooks) Down
         commands2.button.POVButton(self.joystick, 180).whenHeld(
             ContractClimber(self.climber)
         )
 
+        # Climber leans forward
         commands2.button.POVButton(self.joystick, 90).whenHeld(
-            IncreaseClimberAngle(self.angle)
+            AngleClimberForward(self.angle)
         )
 
+        # Climber leans backward
         commands2.button.POVButton(self.joystick, 270).whenHeld(
-            DecreaseClimberAngle(self.angle)
+            AngleClimberBackward(self.angle)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:
