@@ -11,17 +11,11 @@ class AngleClimber(commands2.SubsystemBase):
 
         self.m_angle_hook = ctre.WPI_VictorSPX(constants.C_M_ANGLE_HOOK)
 
-    def angle_increase(self):
+    def angle_forward(self):
         self.m_angle_hook.set(1)
 
-        print("angulo aumenta")
-
-    def anlge_decrease(self):
+    def angle_backward(self):
         self.m_angle_hook.set(-1)
-
-        print("angulo diminui")
 
     def stop_angle(self):
         self.m_angle_hook.set(0)
-
-        print("angulo parado")

@@ -20,14 +20,8 @@ class Climber(commands2.SubsystemBase):
     def move_up(self):
         self.m_climber.set(1)
 
-        print("subindo")
-
     def move_down(self):
         self.m_climber.set(-1)
 
-        print("descendo")
-
     def stop(self):
         self.m_climber.set(0)
-        
-        print("parado")

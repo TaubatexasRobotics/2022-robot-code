@@ -1,23 +1,23 @@
 import commands2
 
 class IntakeUpCmd(commands2.CommandBase):
-    def __init__(self, intakeArm) -> None:
+    def __init__(self, Arm) -> None:
         super().__init__() 
-        self.intakeArm = intakeArm
+        self.Arm = Arm
     
     def execute(self) -> None:
-        self.intakeArm.intake_move_up()
+        self.Arm.intake_move_up()
 
     def end(self, interrupted: bool) -> None:
-       self.intakeArm.intake_move_stop()
+       self.Arm.intake_move_stop()
 
 class IntakeDownCmd(commands2.CommandBase):
-    def __init__(self, intakeArm) -> None:
+    def __init__(self, Arm) -> None:
         super().__init__() 
-        self.intakeArm = intakeArm
+        self.Arm = Arm
     
     def execute(self) -> None:
-        self.intakeArm.intake_move_down()
+        self.Arm.intake_move_down()
         
     def end(self, interrupted: bool) -> None:
-       self.intakeArm.intake_move_stop()
+       self.Arm.intake_move_stop()
