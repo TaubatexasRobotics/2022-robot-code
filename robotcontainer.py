@@ -13,21 +13,21 @@ import constants
 
 # Climber
 from subsystems.climber import Climber
-from commands.climberCmd import ExtendClimber, ContractClimber
-from subsystems.angleClimber import AngleClimber
-from commands.angleClimberCmd import AngleClimberForward, AngleClimberBackward
+from commands.climber_cmd import ExtendClimber, ContractClimber
+from subsystems.climber_angle import ClimberAngle
+from commands.climber_angle_cmd import ClimberAngleForward, ClimberAngleBackward
 
 # Drivetrain
 from subsystems.drivetrain import Drivetrain
-from commands.drivetrainCmd import DrivetrainCmd
+from commands.drivetrain_cmd import DrivetrainCmd
 
 # Arm
 from subsystems.arm import Arm
-from commands.armCmd import IntakeDownCmd, IntakeUpCmd
+from commands.arm_cmd import IntakeDownCmd, IntakeUpCmd
 
 # Intake
 from subsystems.intake import Intake
-from commands.intakeCmd import IntakePushCmd, IntakePullCmd
+from commands.intake_cmd import IntakePushCmd, IntakePullCmd
 
 
 # class that contains all subsystems, commands and setup
@@ -37,7 +37,7 @@ class RobotContainer:
         # Subsystems
         self.drivetrain = Drivetrain()
         self.climber = Climber()
-        self.angle = AngleClimber()
+        self.angle = ClimberAngle()
         self.arm = Arm()
         self.intake = Intake()
         
@@ -85,12 +85,12 @@ class RobotContainer:
 
         # Climber leans forward
         commands2.button.POVButton(self.joystick, 90).whenHeld(
-            AngleClimberForward(self.angle)
+            ClimberAngleForward(self.angle)
         )
 
         # Climber leans backward
         commands2.button.POVButton(self.joystick, 270).whenHeld(
-            AngleClimberBackward(self.angle)
+            ClimberAngleBackward(self.angle)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:

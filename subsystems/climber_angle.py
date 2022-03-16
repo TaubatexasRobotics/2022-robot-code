@@ -5,7 +5,7 @@ import wpilib
 # Import Constants Module
 import constants
 
-class AngleClimber(commands2.SubsystemBase):
+class ClimberAngle(commands2.SubsystemBase):
     def __init__(self):
         super().__init__()
 

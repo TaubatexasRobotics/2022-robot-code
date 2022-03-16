@@ -1,7 +1,7 @@
 import commands2
 
 # Execute commands from the joystick axes
-class AngleClimberForward(commands2.CommandBase):
+class ClimberAngleForward(commands2.CommandBase):
     def __init__(self, angle) -> None:
         super().__init__() 
         self.angle = angle
@@ -12,7 +12,7 @@ class AngleClimberForward(commands2.CommandBase):
     def end(self, interrupted):
         self.angle.stop_angle()
 
-class AngleClimberBackward(commands2.CommandBase):
+class ClimberAngleBackward(commands2.CommandBase):
     def __init__(self, angle) -> None:
         super().__init__() 
         self.angle = angle
