@@ -5,6 +5,9 @@
 # RobotPy
 import wpilib
 
+# JSON
+import json
+
 # Command-based robot
 import commands2
 import commands2.button
@@ -30,6 +33,14 @@ from commands.arm_cmd import IntakeDownCmd, IntakeUpCmd
 from subsystems.intake import Intake
 from commands.intake_cmd import IntakePushCmd, IntakePullCmd
 
+
+# Opening json
+f = open('buttons.json')
+button = json.load(f)
+
+# Load respective buttons
+g_xbox_360 = button['g_xbox_360']
+dualshock4 = button['dualshock_4']
 
 # class that contains all subsystems, commands and setup
 class RobotContainer:
@@ -58,20 +69,20 @@ class RobotContainer:
     def configureButtonBindings(self) -> None:
 
         # Arm Up
-        commands2.button.JoystickButton(self.joystick, 3).whenHeld(
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['a']).whenHeld(
             IntakeUpCmd(self.arm)
         )
         # Arm Down
-        commands2.button.JoystickButton(self.joystick, 4).whenHeld( 
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['y']).whenHeld( 
             IntakeDownCmd(self.arm)
         )
 
         # Pull cargo in
-        commands2.button.JoystickButton(self.joystick, 5).whenHeld( 
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['lb']).whenHeld( 
             IntakePullCmd(self.intake)
         )
         # Push cargo out
-        commands2.button.JoystickButton(self.joystick, 6).whenHeld( 
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['rb']).whenHeld( 
             IntakePushCmd(self.intake)
         )
 
