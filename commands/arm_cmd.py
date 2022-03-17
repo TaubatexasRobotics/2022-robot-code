@@ -1,23 +1,25 @@
 import commands2
+from subsystems.arm import Arm
 
 class IntakeUpCmd(commands2.CommandBase):
-    def __init__(self, Arm) -> None:
-        super().__init__() 
-        self.Arm = Arm
+    def __init__(self, arm: Arm) -> None:
+        super().__init__()
+        self.arm = arm
+        self.addRequirements(arm)
     
     def execute(self) -> None:
-        self.Arm.intake_move_up()
+        self.arm.intake_move_up()
 
     def end(self, interrupted: bool) -> None:
-       self.Arm.intake_move_stop()
+       self.arm.intake_move_stop()
 
 class IntakeDownCmd(commands2.CommandBase):
-    def __init__(self, Arm) -> None:
+    def __init__(self, arm) -> None:
         super().__init__() 
-        self.Arm = Arm
+        self.arm = arm
     
     def execute(self) -> None:
-        self.Arm.intake_move_down()
+        self.arm.intake_move_down()
         
     def end(self, interrupted: bool) -> None:
-       self.Arm.intake_move_stop()
+       self.arm.intake_move_stop()

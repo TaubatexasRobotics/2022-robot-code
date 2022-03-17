@@ -2,11 +2,12 @@
 import ctre
 import commands2
 import wpilib
+
 # Import Constants Module
 import constants
 
 class Climber(commands2.SubsystemBase):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
         #Start Climber controls
@@ -15,13 +16,11 @@ class Climber(commands2.SubsystemBase):
 
         self.m_climber = wpilib.SpeedControllerGroup(self.m_left_hook, self.m_right_hook)
 
-        self.height = 0
-
-    def move_up(self):
+    def move_up(self) -> None:
         self.m_climber.set(1)
 
-    def move_down(self):
+    def move_down(self) -> None:
         self.m_climber.set(-1)
 
-    def stop(self):
+    def stop(self) -> None:
         self.m_climber.set(0)

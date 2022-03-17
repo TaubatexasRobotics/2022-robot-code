@@ -1,9 +1,11 @@
 import commands2
+from subsystems.intake import Intake
 
 class IntakePushCmd(commands2.CommandBase):
-    def __init__(self, intake) -> None:
+    def __init__(self, intake: Intake) -> None:
         super().__init__() 
         self.intake = intake
+        self.addRequirements(intake)
     
     def execute(self) -> None:
         self.intake.intake_push()
@@ -13,9 +15,10 @@ class IntakePushCmd(commands2.CommandBase):
 
 
 class IntakePullCmd(commands2.CommandBase):
-    def __init__(self, intake) -> None:
+    def __init__(self, intake: Intake) -> None:
         super().__init__() 
         self.intake = intake
+        self.addRequirements(intake)
     
     def execute(self) -> None:
         self.intake.intake_pull()

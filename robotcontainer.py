@@ -2,8 +2,9 @@
 # import typing # Lambda Functions
 # from commands2 import button 
 
-# Robot Py
+# RobotPy
 import wpilib
+
 # Command-based robot
 import commands2
 import commands2.button
@@ -54,7 +55,7 @@ class RobotContainer:
         )
 
     # Binding commands to joystick buttons (Except for Drivetrain)
-    def configureButtonBindings(self):
+    def configureButtonBindings(self) -> None:
 
         # Arm Up
         commands2.button.JoystickButton(self.joystick, 3).whenHeld(
