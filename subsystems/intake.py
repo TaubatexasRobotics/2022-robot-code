@@ -8,11 +8,11 @@ class Intake(commands2.SubsystemBase):
 
         self.m_intake = ctre.WPI_VictorSPX(constants.C_M_INTAKE)
 
-    def intake_pull(self):
+    def intake_pull(self) -> None:
         self.m_intake.set(1)
 
-    def intake_push(self):
+    def intake_push(self) -> None:
         self.m_intake.set(-1)
 
-    def intake_stop(self):
+    def intake_stop(self) -> None:
         self.m_intake.set(0)

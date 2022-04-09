@@ -2,8 +2,12 @@
 # import typing # Lambda Functions
 # from commands2 import button 
 
-# Robot Py
+# RobotPy
 import wpilib
+
+# JSON
+import json
+
 # Command-based robot
 import commands2
 import commands2.button
@@ -13,22 +17,30 @@ import constants
 
 # Climber
 from subsystems.climber import Climber
-from commands.climberCmd import ExtendClimber, ContractClimber
-from subsystems.angleClimber import AngleClimber
-from commands.angleClimberCmd import AngleClimberForward, AngleClimberBackward
+from commands.climber_cmd import ExtendClimber, ContractClimber
+from subsystems.climber_angle import ClimberAngle
+from commands.climber_angle_cmd import ClimberAngleForward, ClimberAngleBackward
 
 # Drivetrain
 from subsystems.drivetrain import Drivetrain
-from commands.drivetrainCmd import DrivetrainCmd
+from commands.drivetrain_cmd import DrivetrainCmd
 
 # Arm
 from subsystems.arm import Arm
-from commands.armCmd import IntakeDownCmd, IntakeUpCmd
+from commands.arm_cmd import IntakeDownCmd, IntakeUpCmd
 
 # Intake
 from subsystems.intake import Intake
-from commands.intakeCmd import IntakePushCmd, IntakePullCmd
+from commands.intake_cmd import IntakePushCmd, IntakePullCmd
 
+
+# Opening json
+f = open('buttons.json')
+button = json.load(f)
+
+# Load respective buttons
+g_xbox_360 = button['g_xbox_360']
+dualshock4 = button['dualshock_4']
 
 # class that contains all subsystems, commands and setup
 class RobotContainer:
@@ -37,7 +49,7 @@ class RobotContainer:
         # Subsystems
         self.drivetrain = Drivetrain()
         self.climber = Climber()
-        self.angle = AngleClimber()
+        self.angle = ClimberAngle()
         self.arm = Arm()
         self.intake = Intake()
         
@@ -54,23 +66,23 @@ class RobotContainer:
         )
 
     # Binding commands to joystick buttons (Except for Drivetrain)
-    def configureButtonBindings(self):
+    def configureButtonBindings(self) -> None:
 
         # Arm Up
-        commands2.button.JoystickButton(self.joystick, 3).whenHeld(
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['a']).whenHeld(
             IntakeUpCmd(self.arm)
         )
         # Arm Down
-        commands2.button.JoystickButton(self.joystick, 4).whenHeld( 
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['y']).whenHeld( 
             IntakeDownCmd(self.arm)
         )
 
         # Pull cargo in
-        commands2.button.JoystickButton(self.joystick, 5).whenHeld( 
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['lb']).whenHeld( 
             IntakePullCmd(self.intake)
         )
         # Push cargo out
-        commands2.button.JoystickButton(self.joystick, 6).whenHeld( 
+        commands2.button.JoystickButton(self.joystick, g_xbox_360['rb']).whenHeld( 
             IntakePushCmd(self.intake)
         )
 
@@ -85,12 +97,12 @@ class RobotContainer:
 
         # Climber leans forward
         commands2.button.POVButton(self.joystick, 90).whenHeld(
-            AngleClimberForward(self.angle)
+            ClimberAngleForward(self.angle)
         )
 
         # Climber leans backward
         commands2.button.POVButton(self.joystick, 270).whenHeld(
-            AngleClimberBackward(self.angle)
+            ClimberAngleBackward(self.angle)
         )
 
     def getAutonomousCommand(self) -> commands2.Command:
