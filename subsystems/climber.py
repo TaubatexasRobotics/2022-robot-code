@@ -11,7 +11,7 @@ class Climber(commands2.SubsystemBase):
         super().__init__()
 
         #Start Climber controls
-              self.m_left_hook = ctre.WPI_VictorSPX(constants.C_M_LEFT_HOOK)
+        self.m_left_hook = ctre.WPI_VictorSPX(constants.C_M_LEFT_HOOK)
         #self.m_right_hook = ctre.WPI_VictorSPX(constants.C_M_RIGHT_HOOK)
         self.m_right_hook = wpilib.PWMMotorController("right",0)
 

@@ -8,9 +8,6 @@ class TaubatexasRobot(commands2.TimedCommandRobot):
     def robotInit(self) -> None:
         self.container = RobotContainer()
 
-    def teleopInit(self) -> None:
-        self.container.configureButtonBindings()
-
-# Start TaubatexasRobot Class
+# Defines robot.py as main module and start robot code
 if __name__ == '__main__':
     wpilib.run(TaubatexasRobot)

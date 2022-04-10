@@ -12,7 +12,7 @@ import json
 import commands2
 import commands2.button
 
-# easily managing our constants
+# Easily managing our constants
 import constants
 
 # Climber
@@ -40,7 +40,7 @@ button = json.load(f)
 
 # Load respective buttons
 g_xbox_360 = button['g_xbox_360']
-dualshock4 = button['dualshock_4']
+dualshock_4 = button['dualshock_4']
 
 # class that contains all subsystems, commands and setup
 class RobotContainer:
@@ -56,6 +56,9 @@ class RobotContainer:
         # Joystick
         self.joystick = wpilib.Joystick(constants.C_DRIVER_CONTROLLER)
         
+        # Start Binding Commands (buttons)
+        self.configureButtonBindings()
+
         # Drivetrain: binding command to joystick
         self.drivetrain.setDefaultCommand(
             DrivetrainCmd(
