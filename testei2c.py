@@ -7,7 +7,7 @@ def getData():
     data = []
 
     #
-    pegou = Wire.read(slave_address, MAX_BYTES, data)
+    pegou = !(Wire.read(slave_address, MAX_BYTES, data))
 
     if pegou == True:
         print("informação recebida")
