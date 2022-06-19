@@ -19,6 +19,13 @@ C_M_INTAKE = 7
 # Arm Controller
 C_M_ARM = 8
 
+#### ARM TIMER CONSTANTS ####
+C_ARM_HOLD_UP = 0.08
+C_ARM_HOLD_DOWN = 0.13
+C_ARM_TRAVEL = 0.5
+C_ARM_TIME_UP = 0.5
+C_ARM_TIME_DOWN = 0.35
+
 ##### OTHER CONSTANTS AND PARAMETERS #####
 
 # Joystick Ports
