@@ -27,3 +27,6 @@ C_DRIVER_CONTROLLER = 0
 # Drivetrain parameters
 C_BUFFER_Z_ROTATION = 1.15
 C_BUFFER_X_SPEED = 1
+
+# Serial Connection
+C_BAUD_RATE = 9600
