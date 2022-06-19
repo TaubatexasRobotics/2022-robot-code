@@ -1,4 +1,4 @@
-def readString(self, port) -> str:
+def readString()-> str:
     sz = port.getBytesReceived()
     buf = bytearray(sz)
     sz = port.read(buf)

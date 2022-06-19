@@ -10,6 +10,7 @@ void setup() {
   pinMode(echoPin, INPUT); // Sets the echoPin as an INPUT
   Serial.begin(9600); // // Serial Communication is starting with 9600 of baudrate speed
 }
+
 void loop() {
   // Clears the trigPin condition
   digitalWrite(trigPin, LOW);
