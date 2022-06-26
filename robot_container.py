@@ -5,9 +5,6 @@
 # RobotPy
 import wpilib
 
-# JSON
-import json
-
 # Command-based robot
 import commands2
 import commands2.button
