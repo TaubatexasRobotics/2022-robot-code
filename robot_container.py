@@ -48,7 +48,7 @@ class RobotContainer:
         self.intake = Intake()
         
         # Joystick
-        self.joystick = DualShock4Controller(constants.C_DRIVER_CONTROLLER)
+        self.joystick = GenericXboxController(constants.C_DRIVER_CONTROLLER)
 
         # Drivetrain: binding command to joystick
         self.drivetrain.setDefaultCommand(
@@ -61,30 +61,29 @@ class RobotContainer:
 
     # Binding commands to joystick buttons (Except for Drivetrain)
     def configureButtonBindings(self) -> None:
+        # Pull cargo in
         self.joystick.setupIntakeCommand(IntakePullCmd(self.intake))
-        #self.joystick.outtakeCommand = IntakePushCmd(self.intake)
-        #self.joystick.armUpCommand = IntakeUpCmd(self.arm)
-        #self.joystick.armDownCommand = IntakeDownCmd(self.arm)
 
+        # Push cargo out
+        self.joystick.setupOuttakeCommand(IntakePushCmd(self.intake))
+
+        # Arm Up
+        self.joystick.setupArmUpCommand(IntakeUpCmd(self.arm))
+
+        # Arm Down
+        self.joystick.setupArmDownCommand(IntakeDownCmd(self.arm))
+        
         # Climber (hooks) Up
-        '''
-        commands2.button.POVButton(self.joystick, 0).whenHeld(
-            ExtendClimber(self.climber)
-        )
+        self.joystick.setupExtendClimberCommand(ExtendClimber(self.climber))
+        
         # Climber (hooks) Down
-        commands2.button.POVButton(self.joystick, 180).whenHeld(
-            ContractClimber(self.climber)
-        )
-
+        self.joystick.setupContractClimberCommand(ContractClimber(self.climber))
+        
         # Climber leans forward
-        commands2.button.POVButton(self.joystick, 90).whenHeld(
-            ClimberAngleForward(self.angle)
-        )
+        self.joystick.setupClimberAngleForwardCommand(ClimberAngleForward(self.angle))
 
         # Climber leans backward
-        commands2.button.POVButton(self.joystick, 270).whenHeld(
-            ClimberAngleBackward(self.angle)
-        )
-        '''
+        self.joystick.setupClimberAngleBackwardCommand(ClimberAngleBackward(self.angle))
+
     def getAutonomousCommand(self) -> commands2.Command:
         return self.chooser.getSelected() 
