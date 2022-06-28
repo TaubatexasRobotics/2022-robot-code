@@ -1,5 +1,4 @@
-# DualShock 4 (PS4 Controller) without extern programs
-
+# DualShock 4 (PS4 Controller) without DS4 Controller
 dualshock4 = {
     'square' : 1,
     'cross' : 2,
@@ -15,9 +14,6 @@ dualshock4 = {
     'r3' : 12,
     'ps' : 13,
     'touchpad' : 14,
-    
-    #Ver no simulador o comando respectivo (alert)
-
     'pov-up' : 0,
     'pov-down' : 180,
     'pov-left' : 270,
@@ -25,7 +21,6 @@ dualshock4 = {
 }
 
 # Generic Nintendo Switch Pro Controller
-
 g_pro_controller = {
     'capture' : 0,
     'home' : 1,
@@ -40,7 +35,6 @@ g_pro_controller = {
 }
 
 # Generic Xbox 360 Controller
-
 g_xbox_360 = {
     'a' : 1,
     'b' : 2,
@@ -51,5 +45,9 @@ g_xbox_360 = {
     'back' : 7,
     'start' : 8,
     'press_left_stick' : 9,
-    'press_right_stick' : 10
+    'press_right_stick' : 10,
+    'pov-up' : 0,
+    'pov-down' : 180,
+    'pov-left' : 270,
+    'pov-right' : 90
 }
