@@ -73,13 +73,13 @@ class RobotContainer:
         self.joystick.setupExtendClimberCommand(ExtendClimber(self.climber))
         
         # Climber (hooks) Down
-        #self.joystick.setupContractClimberCommand(ContractClimber(self.climber))
+        self.joystick.setupContractClimberCommand(ContractClimber(self.climber))
         
         # Climber leans forward
-        #self.joystick.setupClimberAngleForwardCommand(ClimberAngleForward(self.angle))
+        self.joystick.setupClimberAngleForwardCommand(ClimberAngleForward(self.angle))
 
         # Climber leans backward
-        #self.joystick.setupClimberAngleBackwardCommand(ClimberAngleBackward(self.angle))
+        self.joystick.setupClimberAngleBackwardCommand(ClimberAngleBackward(self.angle))
 
     def getAutonomousCommand(self) -> commands2.Command:
         return self.chooser.getSelected() 
