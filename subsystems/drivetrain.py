@@ -22,6 +22,10 @@ class Drivetrain(commands2.SubsystemBase):
         self.robot_drive = wpilib.drive.DifferentialDrive(self.m_left, self.m_right)
         self.robot_drive.setExpiration(0.1)
    	
-    # Function for start motors (?)
+    # Enable Safety
+    def enableSafety(self, state : bool) -> None:
+        self.robot_drive.setSafetyEnabled(state)
+
+    # Function for start motors
     def setMotors(self, x_speed : float, z_rotation : float) -> None:
         self.robot_drive.arcadeDrive(x_speed, z_rotation, True)

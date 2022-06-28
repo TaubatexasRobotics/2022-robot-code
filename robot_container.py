@@ -43,6 +43,9 @@ class RobotContainer:
         # Joystick
         self.joystick = GenericXboxController(constants.C_DRIVER_CONTROLLER)
 
+        # Activate Drivetrain Safety
+        self.drivetrain.enableSafety(True)
+
         # Drivetrain: binding command to joystick
         self.drivetrain.setDefaultCommand(
             DrivetrainCmd(
