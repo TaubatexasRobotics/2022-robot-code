@@ -32,16 +32,16 @@ class GenericXboxController(BaseController):
 
     # Getters (POVs)
     def getPOVUp(self) -> int:
-        return 0
+        return g_xbox_360['pov-up']
     
     def getPOVRight(self) -> int:
-        return 90
+        return g_xbox_360['pov-right']
     
     def getPOVDown(self) -> int:
-        return 180
+        return g_xbox_360['pov-down']
 
     def getPOVLeft(self) -> int:
-        return 270
+        return g_xbox_360['pov-left']
 
     # Setup Commands
     def setupIntakeCommand(self, newIntakeCommand : CommandBase) -> None:
