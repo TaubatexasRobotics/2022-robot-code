@@ -11,7 +11,7 @@ class IntakeUpCmd(commands2.CommandBase):
         self.arm.intake_move_up()
 
     def end(self, interrupted: bool) -> None:
-       self.arm.intake_move_stop()
+       self.arm.intake_stop()
 
 class IntakeDownCmd(commands2.CommandBase):
     def __init__(self, arm) -> None:
@@ -22,4 +22,4 @@ class IntakeDownCmd(commands2.CommandBase):
         self.arm.intake_move_down()
         
     def end(self, interrupted: bool) -> None:
-       self.arm.intake_move_stop()
+       self.arm.intake_stop()
