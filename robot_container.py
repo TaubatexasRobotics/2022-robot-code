@@ -1,7 +1,3 @@
-# Not sure yet about these two :)
-# import typing # Lambda Functions
-# from commands2 import button 
-
 # RobotPy
 import wpilib
 
@@ -9,7 +5,7 @@ import wpilib
 import commands2
 import commands2.button
 
-# easily managing our constants
+# Easily managing our constants
 import constants
 
 # Climber
@@ -74,13 +70,13 @@ class RobotContainer:
         self.joystick.setupExtendClimberCommand(ExtendClimber(self.climber))
         
         # Climber (hooks) Down
-        self.joystick.setupContractClimberCommand(ContractClimber(self.climber))
+        #self.joystick.setupContractClimberCommand(ContractClimber(self.climber))
         
         # Climber leans forward
-        self.joystick.setupClimberAngleForwardCommand(ClimberAngleForward(self.angle))
+        #self.joystick.setupClimberAngleForwardCommand(ClimberAngleForward(self.angle))
 
         # Climber leans backward
-        self.joystick.setupClimberAngleBackwardCommand(ClimberAngleBackward(self.angle))
+        #self.joystick.setupClimberAngleBackwardCommand(ClimberAngleBackward(self.angle))
 
     def getAutonomousCommand(self) -> commands2.Command:
         return self.chooser.getSelected() 

@@ -41,19 +41,19 @@ class BaseController(ABC):
 
     # Getters (POVs)
     @abstractmethod
-    def getPOVUp(self) -> float:
+    def getPOVUp(self) -> int:
         pass
 
     @abstractmethod
-    def getPOVDown(self) -> float:
+    def getPOVDown(self) -> int:
         pass
 
     @abstractmethod
-    def getPOVLeft(self) -> float:
+    def getPOVLeft(self) -> int:
         pass
 
     @abstractmethod
-    def getPOVRight(self) -> float:
+    def getPOVRight(self) -> int:
         pass
 
     # Getters (Commands)

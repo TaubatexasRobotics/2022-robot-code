@@ -24,26 +24,24 @@ class GenericXboxController(BaseController):
         return self.controller.getRawAxis(5)
 
     # Get Triggers (Axis)
-    @abstractmethod
     def getLeftTrigger(self) -> float:
         return self.controller.getRawAxis(2)
 
-    @abstractmethod
     def getRightTrigger(self) -> float:
         return self.controller.getRawAxis(3)
 
     # Getters (POVs)
-    def getPOVUp(self) -> float:
-        return self.controller.getPOV(0)
+    def getPOVUp(self) -> int:
+        return 0
     
-    def getPOVRight(self) -> float:
-        return self.controller.getPOV(90)
+    def getPOVRight(self) -> int:
+        return 90
     
-    def getPOVDown(self) -> float:
-        return self.controller.getPOV(180)
+    def getPOVDown(self) -> int:
+        return 180
 
-    def getPOVLeft(self) -> float:
-        return self.controller.getPOV(270)
+    def getPOVLeft(self) -> int:
+        return 270
 
     # Setup Commands
     def setupIntakeCommand(self, newIntakeCommand : CommandBase) -> None:
@@ -59,13 +57,13 @@ class GenericXboxController(BaseController):
         JoystickButton(self.controller, g_xbox_360['b']).whenHeld(newArmDownCommand)
     
     def setupExtendClimberCommand(self, newExtendClimberCommand : CommandBase) -> None:
-        JoystickButton(self.controller, self.getPOVUp()).whenHeld(newExtendClimberCommand)
-    
+        POVButton(self.controller, self.getPOVUp()).whenHeld(newExtendClimberCommand)
+
     def setupContractClimberCommand(self, newContractClimberCommand : CommandBase) -> None:
-        JoystickButton(self.controller, self.getPOVDown()).whenHeld(newContractClimberCommand)
+        POVButton(self.controller, self.getPOVDown()).whenHeld(newContractClimberCommand)
 
     def setupClimberAngleForwardCommand(self, newClimberAngleForwardCommand : CommandBase) -> None:
-        JoystickButton(self.controller, self.getPOVRight()).whenHeld(newClimberAngleForwardCommand)
-    
+        POVButton(self.controller, self.getPOVRight()).whenHeld(newClimberAngleForwardCommand)
+
     def setupClimberAngleBackwardCommand(self, newClimberAngleBackwardCommand : CommandBase) -> None:
-        JoystickButton(self.controller, self.getPOVLeft()).whenHeld(newClimberAngleBackwardCommand)
+        POVButton(self.controller, self.getPOVLeft()).whenHeld(newClimberAngleBackwardCommand)
