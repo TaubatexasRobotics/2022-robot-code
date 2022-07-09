@@ -26,6 +26,15 @@ class Drivetrain(commands2.SubsystemBase):
     def enableSafety(self, state : bool) -> None:
         self.robot_drive.setSafetyEnabled(state)
 
-    # Function for start motors
-    def setMotors(self, x_speed : float, z_rotation : float) -> None:
-        self.robot_drive.arcadeDrive(x_speed, z_rotation, True)
+    # Function for start motors (arcade drive)
+    def setMotorsArcadeDrive(self, x_speed : float, z_rotation : float, square_inputs : bool) -> None:
+        self.robot_drive.arcadeDrive(x_speed, z_rotation, square_inputs)
+
+    # Function for start motors (curvature drive)
+    def setMotorsCurvatureDrive(self, x_speed : float, z_rotation : float, allow_turn_in_place : bool) -> None:
+        self.robot_drive.curvatureDrive(x_speed, z_rotation, allow_turn_in_place)
+
+    # Function for start motors (tank drive)
+    def setMotorsTankDrive(self, left_speed : float, right_speed : float, square_inputs : bool) -> None:
+        self.robot_drive.tankDrive(left, right, square_inputs)
+
