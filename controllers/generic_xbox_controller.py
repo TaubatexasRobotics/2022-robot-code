@@ -12,23 +12,23 @@ class GenericXboxController(BaseController):
     
     # Getters (Stick Axis)
     def getLeftStickX(self) -> float:
-        return self.controller.getRawAxis(0)
+        return self.controller.getRawAxis(g_xbox_360['left-x-stick'])
     
     def getLeftStickY(self) -> float:
-        return self.controller.getRawAxis(1)
+        return self.controller.getRawAxis(g_xbox_360['left-y-stick'])
 
     def getRightStickX(self) -> float:
-        return self.controller.getRawAxis(4)
+        return self.controller.getRawAxis(g_xbox_360['right-x-stick'])
 
     def getRightStickY(self) -> float:
-        return self.controller.getRawAxis(5)
+        return self.controller.getRawAxis(g_xbox_360['right-y-stick'])
 
     # Get Triggers (Axis)
     def getLeftTrigger(self) -> float:
-        return self.controller.getRawAxis(2)
+        return self.controller.getRawAxis(g_xbox_360['lt'])
 
     def getRightTrigger(self) -> float:
-        return self.controller.getRawAxis(3)
+        return self.controller.getRawAxis(g_xbox_360['rt'])
 
     # Getters (POVs)
     def getPOVUp(self) -> int:
