@@ -50,4 +50,4 @@ class DrivetrainTankDrive(commands2.CommandBase):
         self.addRequirements([self.robot_drive])
 
     def execute(self) -> None:
-        self.robot_drive.setMotorsCurvatureDrive(self.left_speed(), self.right_speed(), self.square_inputs)
+        self.robot_drive.setMotorsTankDrive(self.left_speed(), self.right_speed(), self.square_inputs)
