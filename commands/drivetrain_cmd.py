@@ -20,6 +20,7 @@ class DrivetrainArcadeDrive(commands2.CommandBase):
     def execute(self) -> None:
         self.robot_drive.setMotorsArcadeDrive(self.x_speed(), self.z_rotation(), self.square_inputs)
 
+# Executing Curvature Drive
 class DrivetrainCurvatureDrive(commands2.CommandBase):
     def __init__(self, 
     robot_drive : Drivetrain, x_speed : typing.Callable[[], float], 
@@ -35,6 +36,7 @@ class DrivetrainCurvatureDrive(commands2.CommandBase):
     def execute(self) -> None:
         self.robot_drive.setMotorsCurvatureDrive(self.x_speed(), self.z_rotation(), self.allow_turn_in_place)
 
+# Executing Tank Drive
 class DrivetrainTankDrive(commands2.CommandBase):
     def __init__(self, 
     robot_drive : Drivetrain, left_speed : typing.Callable[[], float], 
