@@ -16,7 +16,7 @@ from commands.climber_angle_cmd import ClimberAngleForward, ClimberAngleBackward
 
 # Drivetrain
 from subsystems.drivetrain import Drivetrain
-from commands.drivetrain_cmd import DrivetrainCmd
+from commands.drivetrain_cmd import DrivetrainArcadeDrive
 
 # Arm
 from subsystems.arm import Arm
@@ -48,10 +48,11 @@ class RobotContainer:
 
         # Drivetrain: binding command to joystick
         self.drivetrain.setDefaultCommand(
-            DrivetrainCmd(
+            DrivetrainArcadeDrive(
                 self.drivetrain, 
                 lambda: self.joystick.getLeftStickY() * constants.C_BUFFER_X_SPEED,
                 lambda: self.joystick.getLeftStickX() * constants.C_BUFFER_Z_ROTATION,
+                True
             )
         )
 
