@@ -50,11 +50,11 @@ class GenericXboxController(BaseController):
     def setupOuttakeCommand(self, newOuttakeCommand : CommandBase) -> None:
         JoystickButton(self.controller, g_xbox_360['rb']).whenHeld(newOuttakeCommand)
     
-    def setupArmUpCommand(self, newArmUpCommand : CommandBase) -> None:
-        JoystickButton(self.controller, g_xbox_360['a']).whenHeld(newArmUpCommand)
+    def setupConveyorForwardCommand(self, newConveyorForwardCommand : CommandBase) -> None:
+        JoystickButton(self.controller, g_xbox_360['a']).whenHeld(newConveyorForwardCommand)
     
-    def setupArmDownCommand(self, newArmDownCommand : CommandBase) -> None:
-        JoystickButton(self.controller, g_xbox_360['b']).whenHeld(newArmDownCommand)
+    def setupConveyorBackwardCommand(self, newConveyorBackwardCommand : CommandBase) -> None:
+        JoystickButton(self.controller, g_xbox_360['b']).whenHeld(newConveyorBackwardCommand)
     
     def setupExtendClimberCommand(self, newExtendClimberCommand : CommandBase) -> None:
         POVButton(self.controller, self.getPOVUp()).whenHeld(newExtendClimberCommand)

@@ -6,8 +6,8 @@ class BaseController(ABC):
     def __init__(self) -> None:
         self.__intakeCommand = None
         self.__outtakeCommand = None
-        self.__armUpCommand = None
-        self.__armDownCommand = None
+        self.__conveyorForwardCommand = None
+        self.__conveyorBackwardCommand = None
         self.__extendClimberCommand = None
         self.__contractClimberCommand = None
         self.__climberAngleForwardCommand = None
@@ -66,12 +66,12 @@ class BaseController(ABC):
         return self.__outtakeCommand
     
     @property
-    def armUpCommand(self) -> CommandBase:
-        return self.__armUpCommand
+    def conveyorForwardCommand(self) -> CommandBase:
+        return self.__conveyorForwardCommand
 
     @property
-    def armDownCommand(self) -> CommandBase:
-        return self.__armDownCommand
+    def conveyorBackwardCommand(self) -> CommandBase:
+        return self.__conveyorBackwardCommand
     
     @property
     def extendClimberCommand(self) -> CommandBase:
@@ -102,13 +102,13 @@ class BaseController(ABC):
     def outtakeCommand(self, newOuttakeCommand : CommandBase) -> None:
         self.__outtakeCommand = newOuttakeCommand
     
-    @armUpCommand.setter
-    def armUpCommand(self, newArmUpCommand : CommandBase) -> None:
-        self.__armUpCommand = newArmUpCommand
+    @conveyorForwardCommand.setter
+    def conveyorForwardCommand(self, newConveyorForwardCommand : CommandBase) -> None:
+        self.__conveyorForwardCommand = newConveyorForwardCommand
 
-    @armDownCommand.setter
-    def armDownCommand(self, newArmDownCommand : CommandBase) -> None:
-        self.__armDownCommand = newArmDownCommand
+    @conveyorBackwardCommand.setter
+    def conveyorBackwardCommand(self, newConveyorBackwardCommand : CommandBase) -> None:
+        self.__conveyorBackwardCommand = newConveyorBackwardCommand
 
     @extendClimberCommand.setter
     def extendClimberCommand(self, newExtendClimberCommand : CommandBase) -> None:
@@ -136,11 +136,11 @@ class BaseController(ABC):
         pass
     
     @abstractmethod
-    def setupArmUpCommand(self, newArmUpCommand : CommandBase) -> None:
+    def setupConveyorForwardCommand(self, newConveyorForwardCommand : CommandBase) -> None:
         pass
     
     @abstractmethod
-    def setupArmDownCommand(self, newArmDownCommand : CommandBase) -> None:
+    def setupConveyorBackwardCommand(self, newConveyorBackwardCommand : CommandBase) -> None:
         pass
     
     @abstractmethod
