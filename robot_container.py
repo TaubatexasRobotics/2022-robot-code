@@ -1,4 +1,4 @@
-# RobotPy
+# WPILib
 import wpilib
 
 # Command-based robot
@@ -18,9 +18,9 @@ from commands.climber_angle_cmd import ClimberAngleForward, ClimberAngleBackward
 from subsystems.drivetrain import Drivetrain
 from commands.drivetrain_cmd import DrivetrainArcadeDrive
 
-# Arm
-from subsystems.arm import Arm
-from commands.arm_cmd import IntakeDownCmd, IntakeUpCmd
+# Conveyor
+from subsystems.conveyor import Conveyor
+from commands.conveyor_cmd import ConveyorForwardCmd, ConveyorBackwardCmd
 
 # Intake
 from subsystems.intake import Intake
@@ -37,7 +37,7 @@ class RobotContainer:
         self.drivetrain = Drivetrain()
         self.climber = Climber()
         self.angle = ClimberAngle()
-        self.arm = Arm()
+        self.conveyor = Conveyor()
         self.intake = Intake()
         
         # Joystick
@@ -64,11 +64,11 @@ class RobotContainer:
         # Push cargo out
         self.joystick.setupOuttakeCommand(IntakePushCmd(self.intake))
 
-        # Arm Up
-        self.joystick.setupArmUpCommand(IntakeUpCmd(self.arm))
+        # Conveyor clockwise
+        self.joystick.setupConveyorForwardCommand(ConveyorForwardCmd(self.conveyor))
 
-        # Arm Down
-        self.joystick.setupArmDownCommand(IntakeDownCmd(self.arm))
+        # Conveyor counterclockwise
+        self.joystick.setupConveyorBackwardCommand(ConveyorBackwardCmd(self.conveyor))
         
         # Climber (hooks) Up
         self.joystick.setupExtendClimberCommand(ExtendClimber(self.climber))
@@ -83,4 +83,4 @@ class RobotContainer:
         self.joystick.setupClimberAngleBackwardCommand(ClimberAngleBackward(self.angle))
 
     def getAutonomousCommand(self) -> commands2.Command:
-        return self.chooser.getSelected() 
+        return self.chooser.getSelected()
