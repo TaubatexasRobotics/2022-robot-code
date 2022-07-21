@@ -1,11 +1,19 @@
-import wpilib
+from wpilib import SerialPort
 import constants
-import decode_bytes
 from serial.decode_bytes import readString
 
 class UltrasonicSensor:
     def __init__(self) -> None:
-        self.arduino = wpilib.SerialPort(constants.C_BAUD_RATE, wpilib.SerialPort.Port.kUSB1)
+        self.arduino = SerialPort(constants.C_BAUD_RATE, constants.C_ROBORIO_USB)
     
-    def getDistance(self) -> str:
-        readString (self.arduino)
+    # Reads distance (string) and converts to number
+    def getDistance(self) -> float:
+        distance = self.readString(self.arduino)
+        return distance
+    
+    # Reading bytes from Arduino and decoding to string
+    def readString(self, port : SerialPort)-> str:
+        sz = port.getBytesReceived()
+        buf = bytearray(sz)
+        sz = port.read(buf)
+        return buf[:sz].decode("ascii")
