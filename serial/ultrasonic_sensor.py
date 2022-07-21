@@ -1,6 +1,5 @@
 from wpilib import SerialPort
 import constants
-from serial.decode_bytes import readString
 
 class UltrasonicSensor:
     def __init__(self) -> None:
