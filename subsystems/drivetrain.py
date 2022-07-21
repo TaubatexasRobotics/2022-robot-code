@@ -37,4 +37,3 @@ class Drivetrain(commands2.SubsystemBase):
     # Function for start motors (tank drive)
     def setMotorsTankDrive(self, left_speed : float, right_speed : float, square_inputs : bool) -> None:
         self.robot_drive.tankDrive(left, right, square_inputs)
-
