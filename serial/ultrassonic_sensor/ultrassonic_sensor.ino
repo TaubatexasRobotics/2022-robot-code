@@ -29,4 +29,6 @@ void loop() {
   
   // Displays the distance on the Serial Port
   Serial.print(distance);
+  
+  delay(50);
 }
