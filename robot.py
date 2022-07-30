@@ -11,6 +11,9 @@ class TaubatexasRobot(commands2.TimedCommandRobot):
 
     def teleopInit(self) -> None:
         self.container.configureButtonBindings()
+    
+    def autonomousPeriodic(self) -> None:
+        self.container.StopIntakeSwitch()
 
 # Start TaubatexasRobot Class
 if __name__ == '__main__':
