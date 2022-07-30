@@ -13,6 +13,7 @@ class TaubatexasRobot(commands2.TimedCommandRobot):
         self.container.configureButtonBindings()
     
     def autonomousPeriodic(self) -> None:
+        self.container.intake.intake_pull()
         self.container.StopIntakeSwitch()
 
 # Start TaubatexasRobot Class
