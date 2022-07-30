@@ -82,7 +82,11 @@ class RobotContainer:
         # Climber leans backward
         self.joystick.setupClimberAngleBackwardCommand(ClimberAngleBackward(self.angle))
 
-    def getAutonomousCommand(self) -> commands2.Command:
+    def StopIntakeSwitch(self):
         if Intake.limitSwitch.get():
             Intake.intake_stop()
+    
+
+    def getAutonomousCommand(self) -> commands2.Command:
+        
         return self.chooser.getSelected()
