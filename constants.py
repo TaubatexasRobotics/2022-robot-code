@@ -36,3 +36,6 @@ C_BAUD_RATE = 9600
 C_ROBORIO_USB = 2 # wpilib.SerialPort.Port.kUSB
 C_ROBORIO_USB_1 = 2  # wpilib.SerialPort.Port.kUSB1
 C_ROBORIO_USB_2 = 3 # wpilib.SerialPort.Port.kUSB2
+
+#DIGITALINPUTS
+LIMIT_SWITCH = 0

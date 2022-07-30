@@ -7,7 +7,7 @@ class Intake(commands2.SubsystemBase):
         super().__init__()
 
         self.m_intake = ctre.WPI_VictorSPX(constants.C_M_INTAKE)
-        self.limitSwitch = wpilib.Digital
+        self.limitSwitch = wpilib.DigitalInput(constants.LIMIT_SWITCH)
 
 
     def intake_pull(self) -> None:
